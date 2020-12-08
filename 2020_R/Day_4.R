@@ -5,9 +5,9 @@ data <- readLines('day_4_data.txt')
 breaks <- which(data =='')
 breaks <- c(0,breaks,length(data)+1)
 tally <- 0 
-for(i in 2:length(breaks-1)){
+for(i in 2:(length(breaks))){
         str <- ''
-        for(j in breaks[i-1]:breaks[i]){
+        for(j in (breaks[i-1]+1):(breaks[i]-1)){
                 str<- paste(str,data[j], sep=' ')
         }
         num_field <- 0+grepl('byr:',str)+grepl('iyr:',str)+grepl('eyr:',str)+grepl('hgt:',str)+grepl('hcl:',str)+grepl('ecl:',str)+grepl('pid:',str)
@@ -20,9 +20,9 @@ print(tally)
 
 # Part 2
 tally2 <- 0 
-for(i in 2:length(breaks-1)){
+for(i in 2:length(breaks)){
         str <- ''
-        for(j in breaks[i-1]:breaks[i]){
+        for(j in (breaks[i-1]+1):(breaks[i]-1)){
                 str<- paste(str,data[j], sep=' ')
         }
         num_field <- 0+grepl('byr:',str)+grepl('iyr:',str)+grepl('eyr:',str)+grepl('hgt:',str)+grepl('hcl:',str)+grepl('ecl:',str)+grepl('pid:',str)
