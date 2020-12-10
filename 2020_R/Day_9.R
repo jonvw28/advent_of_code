@@ -44,12 +44,17 @@ print(find_exception(data,25))
 init_contig <- function(data,value){
         sum <- c(0,0)
         loc <- 0
-        while(sum[2]<=value){
+        while(sum[2]<=value & loc<length(data)){
                 loc <- loc + 1
                 sum[1]<-sum[2]
                 sum[2]<-sum[2]+data[loc]
                 
         }
+        if(loc==length(data) & sum[2]<value){
+                warning('you can\'t get a value this big even with all the data')
+                return(c(1,loc,sum[2]))
+        }
+        
         return(c(1,loc-1,sum[1]))
 }
 
