@@ -1,6 +1,20 @@
 # I didn't dare to try convolutions in base R given how simple the indexing for GoL, for much
-# bigger boards, or much high dim data, this would be advisible, since each dimension
-# nests another loop - our order of operations is raised one power of N higher (where N is baoard linear dimension)
+# bigger boards, or much high dim data, this *might* be advisible, since each dimension
+# nests another loop - our order of operations is raised one power of N higher (where N is board linear dimension)
+# this depends on the efficiency of your conv operator given R is actually fast at
+# indexing (when based on index numbers)
+#
+
+# I also chose not to bother trimming th board for each iteration
+# so the board grows by 2 in each dim for each generation, in part because
+# I thought knowing the locations of alive cells might be needed in part 2
+#
+# However, this would reduce the size of the board and therefore limit your
+# checking per loop! For this small a problem the choice of checking would need
+# to be careful to ensure that you don't introduce a bottleneck, but for more
+# generations the pay off will be much much higher, since the board grows by
+# 2 in each dimension in each turn!
+#
 
 setwd("D:/jon/Documents/Cache/advent_of_code/2020_R")
 
